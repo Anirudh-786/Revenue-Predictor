@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Revenue Predictor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+      background: #f8f9fa;
+    }
+    h2 {
+      color: #333;
+    }
+    input {
+      margin: 10px;
+      padding: 8px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #28a745;
+    }
+  </style>
+</head>
+<body>
+  <h2>📊 Company Revenue Predictor</h2>
+
+  <label>Marketing Spend ($):</label>
+  <input id="marketing" type="number" placeholder="Enter amount"><br>
+
+  <label>Number of Employees:</label>
+  <input id="employees" type="number" placeholder="Enter employees"><br>
+
+  <button onclick="predict()">Predict Revenue</button>
+
+  <p id="result"></p>
+
+  <script>
+    // Example regression coefficients from your model
+    // Replace with your trained model values
+    const intercept = 500;  
+    const coef_marketing = 15;  
+    const coef_employees = 120;
+
+    function predict() {
+      let marketing = parseFloat(document.getElementById("marketing").value) || 0;
+      let employees = parseFloat(document.getElementById("employees").value) || 0;
+
+      let revenue = intercept + (coef_marketing * marketing) + (coef_employees * employees);
+      document.getElementById("result").innerText = "💰 Predicted Revenue: $" + revenue.toFixed(2);
+    }
+  </script>
+</body>
+</html>
